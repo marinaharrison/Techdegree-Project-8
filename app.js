@@ -15,7 +15,7 @@ const sequelize = require("./models").sequelize;
 //USE sequelize.authenticate() TO CONNECT TO THE DATABASE
 (async () => {
   //USE sequelize.sync() TO SYNC MODEL WITH DATABASE
-  await sequelize.sync({force:true});
+  //await sequelize.sync({force:true}); **commented out - only to test connection
   try {
     await sequelize.authenticate();
     console.log("Connection to the database successful!");
@@ -27,7 +27,7 @@ const sequelize = require("./models").sequelize;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
