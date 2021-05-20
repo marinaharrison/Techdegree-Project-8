@@ -1,37 +1,36 @@
-extends layout 
+extends layout
 
-block content   
-    h1 Edit #{book.title}
-  
-    if errors
-        h1.error Sorry! 
-        each error in errors
-            p.error=error.message
-        
+block content
+  h1= title
 
-    form(action=`/books/${book.id}`, method="post")
-        div
-            label(for="title") Title: 
-            input(type='text', id="title", name='title', value=book.title)
-        br    
-        div
-            label(for="author") Author: 
-            input(type='text', id="author", name='author', value=book.author)
-        br
-        div
-            label(for="genre") Genre: 
-            input(type='text', id="genre", name='genre', value=book.genre)
-        br
-        div
-            label(for="year") Year: 
-            input(type='text', id="year", name='year', value=book.year)
-        br    
-        div 
-            input(type='submit', name='edit', value="Edit Entry") 
-        br
-    form(action=`/books/${book.id}`, method="get")    
-        input(type='submit', name='cancel', value="Cancel")   
-        br
-        br
-    form(action=`/books/${id}/delete`, method="get")
-        input(type='submit', name="delete", value="Delete Entry", class="warning")  
+  if errors
+      h1.error Sorry!
+      each error in errors
+          p.error=error.message
+
+  form(action=`/books/${book.id}`, method="post")
+    div
+      label(for="title") Title:
+      input(id="title", type="text", name="title" value=book.title)
+    br
+    div
+      label(for="author") Author:
+      input(id="author", type="text", name="author" value=book.author)
+    br
+    div
+      label(for="genre") Genre:
+      input(id="genre", type="text", name="genre" value=book.genre)
+    br
+    div
+      label(for="year") Year:
+      input(id="year", type="text", name="year" value=book.year)
+    br
+    div
+      input(type="submit", name="edit" value="Update Book")
+    br
+    a(href="/books/" + book.id + "/delete", class="button") Delete Book
+
+    br
+    div
+    br
+    a(href="/books", class="button") Cancel
